@@ -1,0 +1,32 @@
+@import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
+
+body {
+	margin: 0;
+	font-family: 'Inter', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background: #e7f6ff;
+}
+
+.wrapper {
+	position: relative;
+	background: #FFFFFF;
+	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
+	border-radius: 20px;
+	max-width: 1080px;
+	margin: 0 auto;
+	margin-top: 80px;
+	padding: 50px;
+}
+
+.line {
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin-top: 40px;
+	width: 100%;
+	display: block;
+	background: #EAEAEA;
+	height: 1px;
+	width: 100%;
+}
