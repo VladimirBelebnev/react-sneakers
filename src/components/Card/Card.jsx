@@ -1,32 +1,42 @@
+import { useState } from "react";
+
 import plus from "../../resource/plus.svg";
 import unliked from "../../resource/heart-unliked.svg";
 import liked from "../../resource/heart-liked.svg";
 import checked from "../../resource/btn-checked.svg";
-import sneakers from "../../resource/sneakers/1.jpg";
 import "./Card.scss";
 
-const Card = () => {
+const Card = ({ data }) => {
+    const [heart, setHeart] = useState(false);
+    const [cart, setCart] = useState(false);
+    const { img, name, price } = data;
+
     return (
         <div className="item">
-            <button className="item-btn item-favorite">
+            <button
+                onClick={() => setHeart((heart) => !heart)}
+                className="item-btn item-favorite">
                 <img
-                    src={unliked}
+                    src={heart ? liked : unliked}
                     alt="unliked"
                 />
             </button>
             <img
-                src={sneakers}
-                alt="sneakers"
+                className="item-img"
+                src={`./img/sneakers/${img}`}
+                alt={name}
             />
-            <p className="item-name">Мужские Кроссовки Nike Blazer Mid Suede</p>
+            <p className="item-name">{name}</p>
             <div className="item-info">
                 <div className="item-price">
                     <span>Цена:</span>
-                    <b>12 999 руб.</b>
+                    <b>{price} руб.</b>
                 </div>
-                <button className="item-btn">
+                <button
+                    onClick={() => setCart((cart) => !cart)}
+                    className="item-btn">
                     <img
-                        src={plus}
+                        src={cart ? checked : plus}
                         alt="add sneakers"
                     />
                 </button>

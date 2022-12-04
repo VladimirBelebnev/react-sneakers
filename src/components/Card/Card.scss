@@ -5,9 +5,14 @@
     border: 1px solid #F3F3F3;
     border-radius: 40px;
     padding: 20px 30px 35px 20px;
-
+    &-img {
+        display: block;
+        margin: 0 auto;
+        width: 132px;
+        height: 112px;
+    }
     &-favorite {
-        transition: .2s all;
+        transition: .2s all ease-in-out;
         position: absolute;
         img {
             height: 32px;

@@ -2,7 +2,7 @@ import Card from "../Card/Card";
 import search from "../../resource/search.svg";
 import "./Content.scss";
 
-const Content = () => {
+const Content = ({ array }) => {
     return (
         <div className="content">
             <div className="content-wrap">
@@ -19,7 +19,12 @@ const Content = () => {
                 </div>
             </div>
             <div className="content-items">
-                <Card />
+                {array.map((data, index) => (
+                    <Card
+                        key={index}
+                        data={data}
+                    />
+                ))}
             </div>
         </div>
     );

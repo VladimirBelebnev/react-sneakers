@@ -1,4 +1,3 @@
-import sneakers from "../../resource/sneakers/1.jpg";
 import arrow from "../../resource/arrow.svg";
 import remove from "../../resource/btn-remove.svg";
 import "./Drawer.scss";
@@ -19,7 +18,7 @@ const Drawer = () => {
                     <div className="cart-item">
                         <img
                             className="cart-preview"
-                            src={sneakers}
+                            src="./img/sneakers/1.jpg"
                             alt="sneakers"
                         />
                         <div className="cart-wrap">
