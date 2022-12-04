@@ -1,14 +1,17 @@
-import Header from './components/Header/Header';
-import Content from './components/Content/Content';
+import Header from "./components/Header/Header";
+import Content from "./components/Content/Content";
+import Drawer from "./components/Drawer/Drawer";
 
 function App() {
-	return (
-		<div className="wrapper">
-			<Header />
-			<span className="line"></span>
-			<Content />
-		</div>	
-	);
-};
+    return (
+        <>
+            <Drawer />
+            <div className="wrapper">
+                <Header />
+                <Content />
+            </div>
+        </>
+    );
+}
 
 export default App;

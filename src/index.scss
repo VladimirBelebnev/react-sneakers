@@ -8,6 +8,10 @@ body {
 	background: #e7f6ff;
 }
 
+* {
+	font-family: 'Inter';
+}
+
 .wrapper {
 	position: relative;
 	background: #FFFFFF;
@@ -15,7 +19,8 @@ body {
 	border-radius: 20px;
 	max-width: 1080px;
 	margin: 0 auto;
-	margin-top: 80px;
+	margin-top: 75px;
+	margin-bottom: 75px;
 	padding: 50px;
 }
 
@@ -29,4 +34,23 @@ body {
 	background: #EAEAEA;
 	height: 1px;
 	width: 100%;
+}
+
+.btn {
+	position: relative;
+	cursor: pointer;
+	font-weight: 600;
+	font-size: 16px;
+	color: #FFFFFF;
+	background: #9DD558;
+	border-radius: 18px;
+	padding: 18px;
+	border: none;
+	transition: .2s background ease-in-out;
+	&:hover {
+		background: lighten(#9DD558, 5%);
+	}
+	&:active {
+		background: darken(#9DD558, 5%);
+	}
 }
