@@ -2,42 +2,49 @@ import arrow from "../../resource/arrow.svg";
 import remove from "../../resource/btn-remove.svg";
 import "./Drawer.scss";
 
-const Drawer = () => {
+const Drawer = ({ cartItems, onCloseCart }) => {
     return (
         <div className="drawer-overlay">
             <div className="drawer">
                 <div className="drawer-header">
                     <h2 className="drawer-title">Корзина</h2>
-                    <img
+                    <button
                         className="drawer-close"
-                        src={remove}
-                        alt="close btn"
-                    />
+                        onClick={() => onCloseCart(false)}>
+                        <img
+                            src={remove}
+                            alt="close btn"
+                        />
+                    </button>
                 </div>
                 <div className="cart">
-                    <div className="cart-item">
-                        <img
-                            className="cart-preview"
-                            src="./img/sneakers/1.jpg"
-                            alt="sneakers"
-                        />
-                        <div className="cart-wrap">
-                            <p>Мужские Кроссовки Nike Air Max 270</p>
-                            <strong>12 999 руб.</strong>
-                        </div>
-                        <button className="cart-remove">
+                    {cartItems.map((item, index) => (
+                        <div
+                            key={index}
+                            className="cart-item">
                             <img
-                                src={remove}
-                                alt="remove btn"
+                                className="cart-preview"
+                                src={`./img/sneakers/${item.img}`}
+                                alt={item.name}
                             />
-                        </button>
-                    </div>
+                            <div className="cart-wrap">
+                                <p>{item.name}</p>
+                                <strong>{item.price} руб.</strong>
+                            </div>
+                            <button className="cart-remove">
+                                <img
+                                    src={remove}
+                                    alt="remove btn"
+                                />
+                            </button>
+                        </div>
+                    ))}
                 </div>
                 <div className="price">
                     <div className="price-block">
                         <p>Итого: </p>
                         <span></span>
-                        <strong>21 498 руб.</strong>
+                        <strong> руб.</strong>
                     </div>
                     <div className="price-block">
                         <p>Налог 5%:</p>

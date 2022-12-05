@@ -6,18 +6,19 @@ import liked from "../../resource/heart-liked.svg";
 import checked from "../../resource/btn-checked.svg";
 import "./Card.scss";
 
-const Card = ({ data }) => {
-    const [heart, setHeart] = useState(false);
-    const [cart, setCart] = useState(false);
+const Card = ({ data, onAddToCart }) => {
     const { img, name, price } = data;
+
+    const [isFavorite, setIsFavorite] = useState(false);
+    const [isCart, setIsCart] = useState(false);
 
     return (
         <div className="item">
             <button
-                onClick={() => setHeart((heart) => !heart)}
+                onClick={() => setIsFavorite(!isFavorite)}
                 className="item-btn item-favorite">
                 <img
-                    src={heart ? liked : unliked}
+                    src={isFavorite ? liked : unliked}
                     alt="unliked"
                 />
             </button>
@@ -33,11 +34,14 @@ const Card = ({ data }) => {
                     <b>{price} руб.</b>
                 </div>
                 <button
-                    onClick={() => setCart((cart) => !cart)}
+                    onClick={() => {
+                        setIsCart(!isCart);
+                        onAddToCart({ name, img, price });
+                    }}
                     className="item-btn">
                     <img
-                        src={cart ? checked : plus}
-                        alt="add sneakers"
+                        src={isCart ? checked : plus}
+                        alt="add sneakers in cart"
                     />
                 </button>
             </div>

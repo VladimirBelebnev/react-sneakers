@@ -1,10 +1,10 @@
 import "./Header.scss";
 import logo from "../../resource/logo.png";
-import basket from "../../resource/basket.svg";
-import heart from "../../resource/heart.svg";
+import cart from "../../resource/cart.svg";
+import favorite from "../../resource/favorite.svg";
 import account from "../../resource/account.svg";
 
-const Header = () => {
+const Header = ({ onOpenCart }) => {
     return (
         <>
             <header className="header">
@@ -20,23 +20,29 @@ const Header = () => {
                 </div>
                 <ul className="header-right">
                     <li>
-                        <img
-                            src={basket}
-                            alt="basket"
-                        />
-                        <span>1205 руб.</span>
+                        <button onClick={() => onOpenCart(true)}>
+                            <img
+                                src={cart}
+                                alt="cart"
+                            />
+                            <span>1205 руб.</span>
+                        </button>
                     </li>
                     <li>
-                        <img
-                            src={heart}
-                            alt="heart"
-                        />
+                        <button>
+                            <img
+                                src={favorite}
+                                alt="favorite"
+                            />
+                        </button>
                     </li>
                     <li>
-                        <img
-                            src={account}
-                            alt="account"
-                        />
+                        <button>
+                            <img
+                                src={account}
+                                alt="account"
+                            />
+                        </button>
                     </li>
                 </ul>
             </header>
