@@ -32,10 +32,21 @@
         input::placeholder {
             color: #C4C4C4;
         }
-        img {
+        .search {
             position: absolute;
             top: 15px;
             left: 15px;
+        }
+        .remove-value {
+            cursor: pointer;
+            opacity: 0.5;
+            transition: .2s opacity ease-in-out ;
+            position: absolute;
+            top: 7px;
+            right: 15px;
+            &:hover {
+                opacity: 1;
+            }
         }
     }
 }

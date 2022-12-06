@@ -7,7 +7,7 @@ import checked from "../../resource/btn-checked.svg";
 import "./Card.scss";
 
 const Card = ({ data, onAddToCart }) => {
-    const { img, name, price } = data;
+    const { img, name, price, id } = data;
 
     const [isFavorite, setIsFavorite] = useState(false);
     const [isCart, setIsCart] = useState(false);
@@ -36,7 +36,7 @@ const Card = ({ data, onAddToCart }) => {
                 <button
                     onClick={() => {
                         setIsCart(!isCart);
-                        onAddToCart({ name, img, price });
+                        onAddToCart({ name, img, price, id });
                     }}
                     className="item-btn">
                     <img

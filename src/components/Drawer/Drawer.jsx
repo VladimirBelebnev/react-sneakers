@@ -2,7 +2,7 @@ import arrow from "../../resource/arrow.svg";
 import remove from "../../resource/btn-remove.svg";
 import "./Drawer.scss";
 
-const Drawer = ({ cartItems, onCloseCart }) => {
+const Drawer = ({ cartItems, onCloseCart, onRemoveFromCart }) => {
     return (
         <div className="drawer-overlay">
             <div className="drawer">
@@ -18,9 +18,9 @@ const Drawer = ({ cartItems, onCloseCart }) => {
                     </button>
                 </div>
                 <div className="cart">
-                    {cartItems.map((item, index) => (
+                    {cartItems.map((item) => (
                         <div
-                            key={index}
+                            key={item.id}
                             className="cart-item">
                             <img
                                 className="cart-preview"
@@ -31,7 +31,9 @@ const Drawer = ({ cartItems, onCloseCart }) => {
                                 <p>{item.name}</p>
                                 <strong>{item.price} руб.</strong>
                             </div>
-                            <button className="cart-remove">
+                            <button
+                                onClick={() => onRemoveFromCart(item.id)}
+                                className="cart-remove">
                                 <img
                                     src={remove}
                                     alt="remove btn"
