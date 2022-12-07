@@ -29,7 +29,7 @@ const Header = ({ onOpenOrCloseCart }) => {
                                 src={cart}
                                 alt="cart"
                             />
-                            <span>1205 руб.</span>
+                            <span> руб.</span>
                         </button>
                     </li>
                     <li>

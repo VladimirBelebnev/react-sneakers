@@ -1,31 +1,16 @@
-import { useState } from "react";
-
 import plus from "../../resource/plus.svg";
 import unliked from "../../resource/heart-unliked.svg";
 import liked from "../../resource/heart-liked.svg";
 import checked from "../../resource/btn-checked.svg";
 import "./Card.scss";
 
-const Card = ({
-    data,
-    onAddToCart,
-    onAddToFavorite,
-    onRemoveFromCart,
-    onRemoveFromFavorite,
-}) => {
-    const { img, name, price, id } = data;
-    const [isFavorite, setIsFavorite] = useState(false);
-    const [isCart, setIsCart] = useState(false);
+const Card = ({ data, onAddToCart, onAddToFavorites }) => {
+    const { img, name, price, id, isCart, isFavorite } = data;
 
     return (
         <div className="item">
             <button
-                onClick={() => {
-                    setIsFavorite(!isFavorite);
-                    !isFavorite
-                        ? onAddToFavorite({ name, img, price, id })
-                        : onRemoveFromFavorite(id);
-                }}
+                onClick={() => onAddToFavorites(id, !isFavorite)}
                 className="item-btn item-favorite">
                 <img
                     src={isFavorite ? liked : unliked}
@@ -45,10 +30,7 @@ const Card = ({
                 </div>
                 <button
                     onClick={() => {
-                        setIsCart(!isCart);
-                        !isCart
-                            ? onAddToCart({ name, img, price, id })
-                            : onRemoveFromCart(id);
+                        onAddToCart(id, !isCart);
                     }}
                     className="item-btn">
                     <img

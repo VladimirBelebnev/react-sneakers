@@ -7,9 +7,8 @@ import remove from "../resource/btn-remove.svg";
 const HomePage = ({
     data,
     onRemoveFromCart,
-    onRemoveFromFavorite,
     onAddToCart,
-    onAddToFavorite,
+    onAddToFavorites,
 }) => {
     const [searchValue, setSearchValue] = useState("");
 
@@ -54,8 +53,7 @@ const HomePage = ({
                         <Card
                             key={data.id}
                             data={data}
-                            onRemoveFromFavorite={onRemoveFromFavorite}
-                            onAddToFavorite={onAddToFavorite}
+                            onAddToFavorites={onAddToFavorites}
                             onAddToCart={onAddToCart}
                             onRemoveFromCart={onRemoveFromCart}
                         />

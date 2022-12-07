@@ -3,7 +3,13 @@ import prevArrow from "../../resource/arrow-prev.svg";
 import remove from "../../resource/btn-remove.svg";
 import "./Drawer.scss";
 
-const Drawer = ({ cartItems, onOpenOrCloseCart, onRemoveFromCart }) => {
+const Drawer = ({ data, onOpenOrCloseCart, onRemoveFromCart }) => {
+    let showCart = false;
+
+    data.forEach((sneakers) => {
+        if (sneakers.isCart) showCart = true;
+    });
+
     return (
         <div className="drawer-overlay">
             <div className="drawer">
@@ -18,20 +24,28 @@ const Drawer = ({ cartItems, onOpenOrCloseCart, onRemoveFromCart }) => {
                         />
                     </button>
                 </div>
-                {cartItems.length === 0 ? (
-                    <DrawerInfo onOpenOrCloseCart={onOpenOrCloseCart} />
-                ) : (
-                    <DrawerCart
-                        cartItems={cartItems}
-                        onRemoveFromCart={onRemoveFromCart}
-                    />
-                )}
+                {!showCart ? (
+                    <DrawerMessage onOpenOrCloseCart={onOpenOrCloseCart} />
+                ) : null}
+                <div className="cart">
+                    {showCart &&
+                        data
+                            .filter((sneakers) => sneakers.isCart)
+                            .map((data) => (
+                                <DrawerCartItem
+                                    key={data.id}
+                                    data={data}
+                                    onRemoveFromCart={onRemoveFromCart}
+                                />
+                            ))}
+                </div>
+                {showCart ? <DrawerPrice /> : null}
             </div>
         </div>
     );
 };
 
-const DrawerInfo = ({ onOpenOrCloseCart }) => {
+const DrawerMessage = ({ onOpenOrCloseCart }) => {
     return (
         <div className="drawer-info">
             <img
@@ -56,54 +70,53 @@ const DrawerInfo = ({ onOpenOrCloseCart }) => {
     );
 };
 
-const DrawerCart = ({ cartItems, onRemoveFromCart }) => {
+const DrawerPrice = () => {
     return (
-        <>
-            <div className="cart">
-                {cartItems.map(({ id, name, price, img }) => (
-                    <div
-                        key={id}
-                        className="cart-item">
-                        <img
-                            className="cart-preview"
-                            src={`./img/sneakers/${img}`}
-                            alt={name}
-                        />
-                        <div className="cart-wrap">
-                            <p>{name}</p>
-                            <strong>{price} руб.</strong>
-                        </div>
-                        <button
-                            onClick={() => onRemoveFromCart(id)}
-                            className="cart-remove">
-                            <img
-                                src={remove}
-                                alt="remove btn"
-                            />
-                        </button>
-                    </div>
-                ))}
+        <div className="price">
+            <div className="price-block">
+                <p>Итого: </p>
+                <span></span>
+                <strong> руб.</strong>
             </div>
-            <div className="price">
-                <div className="price-block">
-                    <p>Итого: </p>
-                    <span></span>
-                    <strong> руб.</strong>
-                </div>
-                <div className="price-block">
-                    <p>Налог 5%:</p>
-                    <span></span>
-                    <strong>1074 руб. </strong>
-                </div>
-                <button className="btn">
-                    Оформить заказ
-                    <img
-                        src={arrow}
-                        alt="arrow"
-                    />
-                </button>
+            <div className="price-block">
+                <p>Налог 5%:</p>
+                <span></span>
+                <strong>1074 руб. </strong>
             </div>
-        </>
+            <button className="btn">
+                Оформить заказ
+                <img
+                    src={arrow}
+                    alt="arrow"
+                />
+            </button>
+        </div>
+    );
+};
+
+const DrawerCartItem = ({ data, onRemoveFromCart }) => {
+    const { id, name, price, img } = data;
+
+    return (
+        <div className="cart-item">
+            <img
+                className="cart-preview"
+                src={`./img/sneakers/${img}`}
+                alt={name}
+            />
+            <div className="cart-wrap">
+                <p>{name}</p>
+                <strong>{price} руб.</strong>
+            </div>
+            <button
+                onClick={() => onRemoveFromCart(id)}
+                className="cart-remove">
+                <img
+                    src={remove}
+                    alt="remove btn"
+                />
+            </button>
+        </div>
     );
 };
 
