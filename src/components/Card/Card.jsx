@@ -6,16 +6,26 @@ import liked from "../../resource/heart-liked.svg";
 import checked from "../../resource/btn-checked.svg";
 import "./Card.scss";
 
-const Card = ({ data, onAddToCart }) => {
+const Card = ({
+    data,
+    onAddToCart,
+    onAddToFavorite,
+    onRemoveFromCart,
+    onRemoveFromFavorite,
+}) => {
     const { img, name, price, id } = data;
-
     const [isFavorite, setIsFavorite] = useState(false);
     const [isCart, setIsCart] = useState(false);
 
     return (
         <div className="item">
             <button
-                onClick={() => setIsFavorite(!isFavorite)}
+                onClick={() => {
+                    setIsFavorite(!isFavorite);
+                    !isFavorite
+                        ? onAddToFavorite({ name, img, price, id })
+                        : onRemoveFromFavorite(id);
+                }}
                 className="item-btn item-favorite">
                 <img
                     src={isFavorite ? liked : unliked}
@@ -36,7 +46,9 @@ const Card = ({ data, onAddToCart }) => {
                 <button
                     onClick={() => {
                         setIsCart(!isCart);
-                        onAddToCart({ name, img, price, id });
+                        !isCart
+                            ? onAddToCart({ name, img, price, id })
+                            : onRemoveFromCart(id);
                     }}
                     className="item-btn">
                     <img

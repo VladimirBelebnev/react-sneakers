@@ -129,7 +129,7 @@
         img {
             transition: transform .2s ease-in-out;
             position: absolute;
-            top: 20px;
+            top: 21px;
             right: 50px;
         }
         &:hover {
@@ -145,5 +145,46 @@
         outline: none;
         border: 0;
         background: transparent;
+    }
+    &-info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+        height: 100%;
+    }
+    &-cart-title {
+        margin: 0;
+        padding: 0;
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 27px;
+        color: #000000;
+    }
+    &-cart-descr {
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        line-height: 24px;
+        text-align: center;
+        color: #000000;
+        opacity: 0.4;
+    }
+    &-img {
+        max-width: 120px;
+    }
+    .prev-arrow {
+        width: 245px;
+        img {
+
+            right: 0px;
+            left: 30px;
+        }
+        &:hover {
+            img {
+                transform: translateX(-5px);
+            } 
+        }
     }
 }

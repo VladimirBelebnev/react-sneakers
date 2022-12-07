@@ -1,18 +1,22 @@
+import { Link } from "react-router-dom";
+
 import "./Header.scss";
 import logo from "../../resource/logo.png";
 import cart from "../../resource/cart.svg";
 import favorite from "../../resource/favorite.svg";
 import account from "../../resource/account.svg";
 
-const Header = ({ onOpenCart }) => {
+const Header = ({ onOpenOrCloseCart }) => {
     return (
         <>
             <header className="header">
                 <div className="header-left">
-                    <img
-                        src={logo}
-                        alt="logo"
-                    />
+                    <Link to="/">
+                        <img
+                            src={logo}
+                            alt="logo"
+                        />
+                    </Link>
                     <div className="header-descr">
                         <h3>REACT SNEAKERS</h3>
                         <p>Магазин лучших кроссовок</p>
@@ -20,7 +24,7 @@ const Header = ({ onOpenCart }) => {
                 </div>
                 <ul className="header-right">
                     <li>
-                        <button onClick={() => onOpenCart(true)}>
+                        <button onClick={() => onOpenOrCloseCart(true)}>
                             <img
                                 src={cart}
                                 alt="cart"
@@ -30,18 +34,22 @@ const Header = ({ onOpenCart }) => {
                     </li>
                     <li>
                         <button>
-                            <img
-                                src={favorite}
-                                alt="favorite"
-                            />
+                            <Link to="/favorites">
+                                <img
+                                    src={favorite}
+                                    alt="favorites"
+                                />
+                            </Link>
                         </button>
                     </li>
                     <li>
                         <button>
-                            <img
-                                src={account}
-                                alt="account"
-                            />
+                            <Link to="/account">
+                                <img
+                                    src={account}
+                                    alt="account"
+                                />
+                            </Link>
                         </button>
                     </li>
                 </ul>

@@ -1,11 +1,16 @@
 import { useState } from "react";
 
-import Card from "../Card/Card";
-import search from "../../resource/search.svg";
-import remove from "../../resource/btn-remove.svg";
-import "./Content.scss";
+import Card from "../components/Card/Card";
+import search from "../resource/search.svg";
+import remove from "../resource/btn-remove.svg";
 
-const Content = ({ data, onAddToCart }) => {
+const HomePage = ({
+    data,
+    onRemoveFromCart,
+    onRemoveFromFavorite,
+    onAddToCart,
+    onAddToFavorite,
+}) => {
     const [searchValue, setSearchValue] = useState("");
 
     return (
@@ -49,7 +54,10 @@ const Content = ({ data, onAddToCart }) => {
                         <Card
                             key={data.id}
                             data={data}
+                            onRemoveFromFavorite={onRemoveFromFavorite}
+                            onAddToFavorite={onAddToFavorite}
                             onAddToCart={onAddToCart}
+                            onRemoveFromCart={onRemoveFromCart}
                         />
                     ))}
             </div>
@@ -57,4 +65,4 @@ const Content = ({ data, onAddToCart }) => {
     );
 };
 
-export default Content;
+export default HomePage;
