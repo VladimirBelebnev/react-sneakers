@@ -2,7 +2,7 @@ export const sneakersArray = [
     {
         id: "1",
         name: "Мужские Кроссовки Nike Blazer Mid Suede",
-        price: "12 999",
+        price: 12999,
         img: "1.jpg",
         isFavorite: false,
         isCart: false,
@@ -10,7 +10,7 @@ export const sneakersArray = [
     {
         id: "2",
         name: "Мужские Кроссовки Nike Air Max 270",
-        price: "12 999",
+        price: 12999,
         img: "2.jpg",
         isFavorite: false,
         isCart: false,
@@ -18,7 +18,7 @@ export const sneakersArray = [
     {
         id: "3",
         name: "Мужские Кроссовки Nike Blazer Mid Suede",
-        price: "8 499",
+        price: 8499,
         img: "3.jpg",
         isFavorite: false,
         isCart: false,
@@ -26,7 +26,7 @@ export const sneakersArray = [
     {
         id: "4",
         name: "Кроссовки Puma X Aka Boku Future Rider",
-        price: "8 999",
+        price: 8999,
         img: "4.jpg",
         isFavorite: false,
         isCart: false,
@@ -34,7 +34,7 @@ export const sneakersArray = [
     {
         id: "5",
         name: "Мужские Кроссовки Under Armour Curry 8",
-        price: "15 199",
+        price: 15199,
         img: "5.jpg",
         isFavorite: false,
         isCart: false,
@@ -42,7 +42,7 @@ export const sneakersArray = [
     {
         id: "6",
         name: "Мужские Кроссовки Nike Kyrie 7",
-        price: "11 299",
+        price: 11299,
         img: "6.jpg",
         isFavorite: false,
         isCart: false,
@@ -50,7 +50,7 @@ export const sneakersArray = [
     {
         id: "7",
         name: "Мужские Кроссовки Jordan Air Jordan 11",
-        price: "10 799",
+        price: 10799,
         img: "7.jpg",
         isFavorite: false,
         isCart: false,
@@ -58,7 +58,7 @@ export const sneakersArray = [
     {
         id: "8",
         name: "Мужские Кроссовки Nike LeBron XVIII",
-        price: "16 499",
+        price: 16499,
         img: "8.jpg",
         isFavorite: false,
         isCart: false,
@@ -66,7 +66,7 @@ export const sneakersArray = [
     {
         id: "9",
         name: "Мужские Кроссовки Nike Lebron XVIII Low",
-        price: "13 999",
+        price: 13999,
         img: "9.jpg",
         isFavorite: false,
         isCart: false,
@@ -74,7 +74,7 @@ export const sneakersArray = [
     {
         id: "10",
         name: "Мужские Кроссовки Nike Blazer Mid Suede",
-        price: "8 499",
+        price: 8499,
         img: "10.jpg",
         isFavorite: false,
         isCart: false,
@@ -82,7 +82,7 @@ export const sneakersArray = [
     {
         id: "11",
         name: "Кроссовки Puma X Aka Boku Future Rider",
-        price: "8 999",
+        price: 8999,
         img: "11.jpg",
         isFavorite: false,
         isCart: false,
@@ -90,7 +90,7 @@ export const sneakersArray = [
     {
         id: "12",
         name: "Мужские Кроссовки Nike Kyrie Flytrap IV",
-        price: "11 299",
+        price: 11299,
         img: "12.jpg",
         isFavorite: false,
         isCart: false,

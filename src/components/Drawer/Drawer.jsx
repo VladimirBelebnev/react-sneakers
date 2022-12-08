@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Context } from "../../context";
 
-import DrawerMessage from "./DrawerMessage";
+import Message from "../Message";
 import DrawerCartItem from "./DrawerCartItem";
 import DrawerPrice from "./DrawerPrice";
 
@@ -31,7 +31,15 @@ const Drawer = () => {
                         />
                     </button>
                 </div>
-                {!showCart ? <DrawerMessage /> : null}
+                {!showCart ? (
+                    <Message
+                        img={"./img/box.png"}
+                        title={"Корзина пустая"}
+                        descr={
+                            "Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ."
+                        }
+                    />
+                ) : null}
                 <div className="cart">
                     {showCart &&
                         data

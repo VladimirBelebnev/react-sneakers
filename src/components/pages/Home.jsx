@@ -2,12 +2,13 @@ import { useState, useContext } from "react";
 import { Context } from "../../context";
 
 import Card from "../Card/Card";
+import Sceleton from "../Sceleton";
 import search from "../../resources/search.svg";
 import remove from "../../resources/btn-remove.svg";
 
 const HomePage = () => {
     const [searchValue, setSearchValue] = useState("");
-    const { data } = useContext(Context);
+    const { data, isLoading } = useContext(Context);
 
     return (
         <div className="content">
@@ -40,18 +41,22 @@ const HomePage = () => {
                 </div>
             </div>
             <div className="content-items">
-                {data
-                    .filter((data) =>
-                        data.name
-                            .toLowerCase()
-                            .includes(searchValue.toLowerCase())
-                    )
-                    .map((data) => (
-                        <Card
-                            key={data.id}
-                            data={data}
-                        />
-                    ))}
+                {isLoading
+                    ? [...Array(12)].map(() => (
+                          <Sceleton key={Math.random(0, 100)} />
+                      ))
+                    : data
+                          .filter((data) =>
+                              data.name
+                                  .toLowerCase()
+                                  .includes(searchValue.toLowerCase())
+                          )
+                          .map((data) => (
+                              <Card
+                                  key={data.id}
+                                  data={data}
+                              />
+                          ))}
             </div>
         </div>
     );

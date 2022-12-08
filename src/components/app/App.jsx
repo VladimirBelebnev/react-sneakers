@@ -1,16 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Context } from "../../context";
 import { sneakersArray } from "../../data";
 
 import Header from "../Header/Header";
+import Drawer from "../Drawer/Drawer";
 import HomePage from "../pages/Home";
 import FavoritesPage from "../pages/Favorites";
-import Drawer from "../Drawer/Drawer";
+import OrdersPage from "../pages/Orders";
 
 const App = () => {
-    const [data, setData] = useState(sneakersArray);
+    const [data, setData] = useState([]);
     const [cartOpened, setCartOpened] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+
+    // Иллюзия загрузи
+    useEffect(() => {
+        setTimeout(() => {
+            setData(sneakersArray);
+            setIsLoading(false);
+        }, 2000);
+    }, []);
+
+    const totalPrice = data
+        .filter((sneakers) => sneakers.isCart)
+        .reduce((sum, sneakers) => sneakers.price + sum, 0);
 
     const onToggleCart = (bool) => setCartOpened(bool);
 
@@ -34,6 +48,8 @@ const App = () => {
         <Context.Provider
             value={{
                 data,
+                isLoading,
+                totalPrice,
                 cartOpened,
                 onToggleCartOrFavorite,
                 onRemoveFromCartOrFavorite,
@@ -45,11 +61,16 @@ const App = () => {
                 <Routes>
                     <Route
                         path="/"
-                        element={<HomePage />}></Route>
+                        element={<HomePage />}
+                    />
                     <Route
                         path="/favorites"
-                        element={<FavoritesPage />}></Route>
-                    <Route path="/account"></Route>
+                        element={<FavoritesPage />}
+                    />
+                    <Route
+                        path="/orders"
+                        element={<OrdersPage />}
+                    />
                 </Routes>
             </div>
         </Context.Provider>

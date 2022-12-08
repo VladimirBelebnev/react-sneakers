@@ -38,6 +38,8 @@ body {
 
 .btn {
 	position: relative;
+    text-align: center;
+    text-decoration: none;
 	cursor: pointer;
 	font-weight: 600;
 	font-size: 16px;
@@ -105,5 +107,30 @@ body {
                 opacity: 1;
             }
         }
+    }
+}
+
+.message-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    width: 100%;
+}
+
+.prev-arrow {
+    position: relative !important;
+    width: 245px;
+    img {
+        position: absolute;
+        right: 0;
+        left: 30px;
+        top: 22px;
+        transition: .2s all ease-in-out;
+    }
+    &:hover {
+        img {
+            transform: translateX(-5px);
+        } 
     }
 }

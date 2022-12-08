@@ -9,7 +9,7 @@ import favorite from "../../resources/favorite.svg";
 import account from "../../resources/account.svg";
 
 const Header = () => {
-    const { onToggleCart } = useContext(Context);
+    const { totalPrice, onToggleCart } = useContext(Context);
 
     return (
         <>
@@ -35,7 +35,7 @@ const Header = () => {
                                 src={cart}
                                 alt="cart"
                             />
-                            <span> руб.</span>
+                            <span>{totalPrice} руб.</span>
                         </button>
                     </li>
                     <li>
@@ -50,7 +50,7 @@ const Header = () => {
                     </li>
                     <li>
                         <button>
-                            <Link to="/account">
+                            <Link to="/orders">
                                 <img
                                     src={account}
                                     alt="account"
