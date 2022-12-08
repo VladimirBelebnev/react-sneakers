@@ -1,12 +1,16 @@
+import { useContext } from "react";
+import { Context } from "../../context";
 import { Link } from "react-router-dom";
 
 import "./Header.scss";
-import logo from "../../resource/logo.png";
-import cart from "../../resource/cart.svg";
-import favorite from "../../resource/favorite.svg";
-import account from "../../resource/account.svg";
+import logo from "../../resources/logo.png";
+import cart from "../../resources/cart.svg";
+import favorite from "../../resources/favorite.svg";
+import account from "../../resources/account.svg";
 
-const Header = ({ onOpenOrCloseCart }) => {
+const Header = () => {
+    const { onToggleCart } = useContext(Context);
+
     return (
         <>
             <header className="header">
@@ -24,7 +28,7 @@ const Header = ({ onOpenOrCloseCart }) => {
                 </div>
                 <ul className="header-right">
                     <li>
-                        <button onClick={() => onOpenOrCloseCart(true)}>
+                        <button onClick={() => onToggleCart(true)}>
                             <img
                                 src={cart}
                                 alt="cart"

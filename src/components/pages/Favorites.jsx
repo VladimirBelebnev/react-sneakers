@@ -1,12 +1,6 @@
 // import Card from "../components/Card/Card";
 
-const FavoritesPage = ({
-    data,
-    onRemoveFromCart,
-    onRemoveFromFavorite,
-    onAddToCart,
-    onAddToFavorite,
-}) => {
+const FavoritesPage = () => {
     return (
         <div className="content">
             <div className="content-wrap">

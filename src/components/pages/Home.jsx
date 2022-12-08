@@ -1,16 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { Context } from "../../context";
 
-import Card from "../components/Card/Card";
-import search from "../resource/search.svg";
-import remove from "../resource/btn-remove.svg";
+import Card from "../Card/Card";
+import search from "../../resources/search.svg";
+import remove from "../../resources/btn-remove.svg";
 
-const HomePage = ({
-    data,
-    onRemoveFromCart,
-    onAddToCart,
-    onAddToFavorites,
-}) => {
+const HomePage = () => {
     const [searchValue, setSearchValue] = useState("");
+    const { data } = useContext(Context);
 
     return (
         <div className="content">
@@ -53,9 +50,6 @@ const HomePage = ({
                         <Card
                             key={data.id}
                             data={data}
-                            onAddToFavorites={onAddToFavorites}
-                            onAddToCart={onAddToCart}
-                            onRemoveFromCart={onRemoveFromCart}
                         />
                     ))}
             </div>

@@ -1,16 +1,23 @@
-import plus from "../../resource/plus.svg";
-import unliked from "../../resource/heart-unliked.svg";
-import liked from "../../resource/heart-liked.svg";
-import checked from "../../resource/btn-checked.svg";
+import { useContext } from "react";
+import { Context } from "../../context";
+
+import plus from "../../resources/plus.svg";
+import unliked from "../../resources/heart-unliked.svg";
+import liked from "../../resources/heart-liked.svg";
+import checked from "../../resources/btn-checked.svg";
 import "./Card.scss";
 
-const Card = ({ data, onAddToCart, onAddToFavorites }) => {
+const Card = ({ data }) => {
+    const { onToggleCartOrFavorite } = useContext(Context);
+
     const { img, name, price, id, isCart, isFavorite } = data;
 
     return (
         <div className="item">
             <button
-                onClick={() => onAddToFavorites(id, !isFavorite)}
+                onClick={() =>
+                    onToggleCartOrFavorite(id, "isFavorite", !isFavorite)
+                }
                 className="item-btn item-favorite">
                 <img
                     src={isFavorite ? liked : unliked}
@@ -30,7 +37,7 @@ const Card = ({ data, onAddToCart, onAddToFavorites }) => {
                 </div>
                 <button
                     onClick={() => {
-                        onAddToCart(id, !isCart);
+                        onToggleCartOrFavorite(id, "isCart", !isCart);
                     }}
                     className="item-btn">
                     <img
