@@ -12,15 +12,25 @@ import OrdersPage from "../pages/Orders";
 const App = () => {
     const [data, setData] = useState([]);
     const [cartOpened, setCartOpened] = useState(false);
+    // Иллюзия загрузи данных сервера после перезагрузки страницы.
+    // Тут и дальше по коду -> (<Home />, <Favorites />).
     const [isLoading, setIsLoading] = useState(true);
 
-    // Иллюзия загрузи
     useEffect(() => {
         setTimeout(() => {
-            setData(sneakersArray);
+            setDataFunc(
+                localStorage.getItem("sneakersArray")
+                    ? JSON.parse(localStorage.getItem("sneakersArray"))
+                    : []
+            );
             setIsLoading(false);
         }, 2000);
     }, []);
+
+    const setDataFunc = (sneakersArray) => {
+        setData(sneakersArray);
+        localStorage.setItem("sneakersArray", JSON.stringify(sneakersArray));
+    };
 
     const totalPrice = data
         .filter((sneakers) => sneakers.isCart)
@@ -33,7 +43,7 @@ const App = () => {
             sneakers.id === id ? { ...sneakers, [key]: value } : sneakers
         );
 
-        setData(newData);
+        setDataFunc(newData);
     };
 
     const onRemoveFromCartOrFavorite = (id, key) => {
@@ -41,7 +51,7 @@ const App = () => {
             sneakers.id === id ? { ...sneakers, [key]: false } : sneakers
         );
 
-        setData(newData);
+        setDataFunc(newData);
     };
 
     return (
