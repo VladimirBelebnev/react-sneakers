@@ -22,8 +22,10 @@ const Header = () => {
                         />
                     </Link>
                     <div className="header-descr">
-                        <h3>REACT SNEAKERS</h3>
-                        <p>Магазин лучших кроссовок</p>
+                        <Link to="/">
+                            <h3>REACT SNEAKERS</h3>
+                            <p>Магазин лучших кроссовок</p>
+                        </Link>
                     </div>
                 </div>
                 <ul className="header-right">

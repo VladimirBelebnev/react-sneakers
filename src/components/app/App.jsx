@@ -49,6 +49,7 @@ const App = () => {
                     <Route
                         path="/favorites"
                         element={<FavoritesPage />}></Route>
+                    <Route path="/account"></Route>
                 </Routes>
             </div>
         </Context.Provider>

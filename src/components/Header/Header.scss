@@ -14,7 +14,11 @@
     }
 
     &-descr {
+        a {
+            text-decoration: none;
+        }
         h3 {
+            color: #000;
             font-size: 20px;
             font-weight: 900;
             margin: 0;
