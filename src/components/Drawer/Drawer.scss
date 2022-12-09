@@ -39,8 +39,8 @@
         font-size: 24px;
     }
     &-success {
-        font-size: 22px;
-        color: #87C20A;
+        font-size: 22px !important;
+        color: #87C20A !important;
     }
     .cart {
         overflow: auto;
@@ -165,6 +165,8 @@
         flex-direction: column;
         gap: 20px;
         height: 100%;
+        opacity: 1;
+        transition: opacity .5s ease-in-out;
     }
     &-cart-title {
         margin: 0;

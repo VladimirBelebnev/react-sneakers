@@ -7,23 +7,25 @@ import liked from "../../resources/heart-liked.svg";
 import checked from "../../resources/btn-checked.svg";
 import "./Card.scss";
 
-const Card = ({ data }) => {
+const Card = ({ data, removeButton }) => {
     const { onToggleCartOrFavorite } = useContext(Context);
 
     const { img, name, price, id, isCart, isFavorite } = data;
 
     return (
         <div className="item">
-            <button
-                onClick={() =>
-                    onToggleCartOrFavorite(id, "isFavorite", !isFavorite)
-                }
-                className="item-btn item-favorite">
-                <img
-                    src={isFavorite ? liked : unliked}
-                    alt="unliked"
-                />
-            </button>
+            {!removeButton && (
+                <button
+                    onClick={() =>
+                        onToggleCartOrFavorite(id, "isFavorite", !isFavorite)
+                    }
+                    className="item-btn item-favorite">
+                    <img
+                        src={isFavorite ? liked : unliked}
+                        alt="unliked"
+                    />
+                </button>
+            )}
             <img
                 className="item-img"
                 src={`./img/sneakers/${img}`}
@@ -35,16 +37,18 @@ const Card = ({ data }) => {
                     <span>Цена:</span>
                     <b>{price} руб.</b>
                 </div>
-                <button
-                    onClick={() => {
-                        onToggleCartOrFavorite(id, "isCart", !isCart);
-                    }}
-                    className="item-btn">
-                    <img
-                        src={isCart ? checked : plus}
-                        alt="add sneakers in cart"
-                    />
-                </button>
+                {!removeButton && (
+                    <button
+                        onClick={() => {
+                            onToggleCartOrFavorite(id, "isCart", !isCart);
+                        }}
+                        className="item-btn">
+                        <img
+                            src={isCart ? checked : plus}
+                            alt="add sneakers in cart"
+                        />
+                    </button>
+                )}
             </div>
         </div>
     );

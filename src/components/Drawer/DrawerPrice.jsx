@@ -4,7 +4,9 @@ import { Context } from "../../context";
 import arrow from "../../resources/arrow.svg";
 
 const DrawerPrice = () => {
-    const { totalPrice } = useContext(Context);
+    const { data, setOrdersFunc, totalPrice } = useContext(Context);
+
+    let orderArray = data.filter((sneakers) => sneakers.isCart);
 
     return (
         <div className="price">
@@ -20,7 +22,9 @@ const DrawerPrice = () => {
                 <span></span>
                 <strong>{(totalPrice * 0.05).toFixed(2)} руб. </strong>
             </div>
-            <button className="btn">
+            <button
+                onClick={() => setOrdersFunc(orderArray)}
+                className="btn">
                 Оформить заказ
                 <img
                     src={arrow}

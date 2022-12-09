@@ -9,7 +9,7 @@ import remove from "../../resources/btn-remove.svg";
 import "./Drawer.scss";
 
 const Drawer = () => {
-    const { data, onToggleCart } = useContext(Context);
+    const { data, orderID, isSend, onToggleCart } = useContext(Context);
 
     let showCart = false;
 
@@ -31,7 +31,15 @@ const Drawer = () => {
                         />
                     </button>
                 </div>
-                {!showCart ? (
+                {isSend ? (
+                    <Message
+                        img={"./img/success.png"}
+                        title={"Заказ оформлен!"}
+                        titleClass={"drawer-success"}
+                        descr={`Ваш заказ #${orderID} скоро будет передан курьерской доставке.`}
+                    />
+                ) : null}
+                {!showCart && !isSend ? (
                     <Message
                         img={"./img/box.png"}
                         title={"Корзина пустая"}

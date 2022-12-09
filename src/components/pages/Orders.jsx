@@ -5,6 +5,8 @@ import Message from "../Message";
 import Card from "../Card/Card";
 
 const OrdersPage = () => {
+    const { orders } = useContext(Context);
+
     let showOrders = false;
 
     return (
@@ -12,7 +14,7 @@ const OrdersPage = () => {
             <div className="content-wrap">
                 <h1>Мои закладки</h1>
             </div>
-            {!showOrders && (
+            {!showOrders && orders.length === 0 ? (
                 <div className="message-wrap">
                     <Message
                         img={"./img/sadness.png"}
@@ -20,8 +22,16 @@ const OrdersPage = () => {
                         descr={"Вы еще ничего не купили"}
                     />
                 </div>
-            )}
-            <div className="content-items"></div>
+            ) : null}
+            <div className="content-items">
+                {orders.map((data) => (
+                    <Card
+                        removeButton="true"
+                        key={data.id}
+                        data={data}
+                    />
+                ))}
+            </div>
         </div>
     );
 };
