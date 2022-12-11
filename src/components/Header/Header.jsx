@@ -17,7 +17,7 @@ const Header = () => {
         <>
             <header className="header">
                 <div className="header-left">
-                    <Link to="/">
+                    <Link to="/react-sneakers">
                         <img
                             src={logo}
                             alt="logo"

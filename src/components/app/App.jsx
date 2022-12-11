@@ -112,7 +112,7 @@ const App = () => {
                 <Header />
                 <Routes>
                     <Route
-                        path="/"
+                        path="/react-sneakers"
                         element={<HomePage />}
                     />
                     <Route

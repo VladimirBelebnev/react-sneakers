@@ -9,7 +9,7 @@ const ButtonPrev = () => {
 
     return (
         <Link
-            to="/"
+            to="/react-sneakers"
             onClick={() => {
                 onToggleCart(false);
                 setIsSend(false);
