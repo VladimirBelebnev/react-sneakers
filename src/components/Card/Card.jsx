@@ -14,7 +14,7 @@ const Card = ({ data, removeButton }) => {
 
     return (
         <div className="item">
-            {!removeButton && (
+            {!removeButton ? (
                 <button
                     onClick={() =>
                         onToggleCartOrFavorite(id, "isFavorite", !isFavorite)
@@ -25,7 +25,7 @@ const Card = ({ data, removeButton }) => {
                         alt="unliked"
                     />
                 </button>
-            )}
+            ) : null}
             <img
                 className="item-img"
                 src={`./img/sneakers/${img}`}
@@ -37,7 +37,7 @@ const Card = ({ data, removeButton }) => {
                     <span>Цена:</span>
                     <b>{price} руб.</b>
                 </div>
-                {!removeButton && (
+                {!removeButton ? (
                     <button
                         onClick={() => {
                             onToggleCartOrFavorite(id, "isCart", !isCart);
@@ -48,7 +48,7 @@ const Card = ({ data, removeButton }) => {
                             alt="add sneakers in cart"
                         />
                     </button>
-                )}
+                ) : null}
             </div>
         </div>
     );

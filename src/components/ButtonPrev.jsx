@@ -5,12 +5,15 @@ import { Context } from "../context";
 import prevArrow from "../resources/arrow-prev.svg";
 
 const ButtonPrev = () => {
-    const { onToggleCart } = useContext(Context);
+    const { onToggleCart, setIsSend } = useContext(Context);
 
     return (
         <Link
             to="/"
-            onClick={() => onToggleCart(false)}
+            onClick={() => {
+                onToggleCart(false);
+                setIsSend(false);
+            }}
             className="btn prev-arrow">
             Вернуться назад
             <img

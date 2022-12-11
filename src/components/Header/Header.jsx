@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useTotalPrice } from "../../hooks/hooks";
 import { Context } from "../../context";
 import { Link } from "react-router-dom";
 
@@ -9,7 +10,8 @@ import favorite from "../../resources/favorite.svg";
 import account from "../../resources/account.svg";
 
 const Header = () => {
-    const { totalPrice, onToggleCart } = useContext(Context);
+    const { data, onToggleCart } = useContext(Context);
+    const totalPrice = useTotalPrice(data);
 
     return (
         <>
@@ -35,7 +37,12 @@ const Header = () => {
                                 src={cart}
                                 alt="cart"
                             />
-                            <span>{totalPrice} руб.</span>
+                            <span>
+                                {totalPrice % 1
+                                    ? totalPrice.toFixed(2)
+                                    : totalPrice}{" "}
+                                руб.
+                            </span>
                         </button>
                     </li>
                     <li>

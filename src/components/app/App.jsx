@@ -26,7 +26,7 @@ const App = () => {
     const [isSend, setIsSend] = useState(false);
 
     // Иллюзия загрузи данных сервера после перезагрузки страницы.
-    // Тут и дальше по коду -> (<Home />, <Favorites />).
+    // Тут и дальше по коду -> (<Home />, <Favorites />, <Drawer />).
     useEffect(() => {
         setTimeout(() => {
             setDataFunc(
@@ -38,45 +38,41 @@ const App = () => {
         }, 2000);
     }, []);
 
-    const setDataFunc = (sneakersArray) => {
-        setData(sneakersArray);
-        localStorage.setItem("sneakersArray", JSON.stringify(sneakersArray));
-    };
-
-    const setOrdersFunc = (sneakersArray) => {
-        setIsSend(true);
-
-        const newSneakersArray = sneakersArray.map(
-            (sneakers) =>
-                sneakers && { ...sneakers, isCart: false, isFavorite: false }
-        );
-
-        setOrderID((prev) => prev + 1);
-        localStorage.setItem("orderID", JSON.stringify(orderID + 1));
-
-        setOrders(orders.concat(newSneakersArray));
-        localStorage.setItem(
-            "ordersArray",
-            JSON.stringify(orders.concat(newSneakersArray))
-        );
-
-        const newData = data.map(
-            (sneakers) => sneakers && { ...sneakers, isCart: false }
-        );
-
-        setDataFunc(newData);
-    };
-
-    // _________ //
     useEffect(() => {
         setTimeout(() => {
             setIsSend(false);
         }, 7000);
     }, [orders]);
 
-    const totalPrice = data
-        .filter((sneakers) => sneakers.isCart)
-        .reduce((sum, sneakers) => sneakers.price + sum, 0);
+    const setDataFunc = (sneakersArray) => {
+        setData(sneakersArray);
+        localStorage.setItem("sneakersArray", JSON.stringify(sneakersArray));
+    };
+
+    const setOrderIDFunc = () => {
+        setOrderID((prev) => prev + 1);
+        localStorage.setItem("orderID", JSON.stringify(orderID + 1));
+    };
+
+    const setOrdersFunc = (ordersArray) => {
+        setIsSend(true);
+
+        const newOrdersArray = ordersArray.map(
+            (sneakers) =>
+                sneakers && { ...sneakers, isCart: false, isFavorite: false }
+        );
+
+        setOrders(orders.concat(newOrdersArray));
+        localStorage.setItem(
+            "ordersArray",
+            JSON.stringify(orders.concat(newOrdersArray))
+        );
+
+        setDataFunc(
+            data.map((sneakers) => sneakers && { ...sneakers, isCart: false })
+        );
+        setOrderIDFunc();
+    };
 
     const onToggleCart = (bool) => setCartOpened(bool);
 
@@ -104,14 +100,14 @@ const App = () => {
                 orderID,
                 isLoading,
                 isSend,
-                totalPrice,
+                setIsSend,
                 cartOpened,
                 onToggleCartOrFavorite,
                 onRemoveFromCartOrFavorite,
                 onToggleCart,
                 setOrdersFunc,
             }}>
-            {cartOpened ? <Drawer /> : null}
+            <Drawer opened={cartOpened} />
             <div className="wrapper">
                 <Header />
                 <Routes>

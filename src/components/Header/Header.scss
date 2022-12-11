@@ -71,3 +71,30 @@
         }
     }
 }
+
+@media (max-width: 768px) {
+    .header {
+        &-left {
+            gap: 8px;
+        }
+        &-right {
+             gap: 20px;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .header {
+        &-left {
+            h3 {
+                display: none;
+            }
+            p {
+                display: none;
+            }
+        }
+        &-right {
+             gap: 15px;
+        }
+    }
+}

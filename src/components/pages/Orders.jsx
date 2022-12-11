@@ -3,18 +3,19 @@ import { Context } from "../../context";
 
 import Message from "../Message";
 import Card from "../Card/Card";
+import Sceleton from "../Sceleton";
 
 const OrdersPage = () => {
-    const { orders } = useContext(Context);
+    const { orders, isLoading } = useContext(Context);
 
-    let showOrders = false;
+    const generateID = () => Math.floor(Math.random() * (100000 - 0 + 1)) + 0;
 
     return (
         <div className="content">
             <div className="content-wrap">
-                <h1>Мои закладки</h1>
+                <h1>Мои заказы</h1>
             </div>
-            {!showOrders && orders.length === 0 ? (
+            {!isLoading && orders.length === 0 ? (
                 <div className="message-wrap">
                     <Message
                         img={"./img/sadness.png"}
@@ -24,13 +25,15 @@ const OrdersPage = () => {
                 </div>
             ) : null}
             <div className="content-items">
-                {orders.map((data) => (
-                    <Card
-                        removeButton="true"
-                        key={data.id}
-                        data={data}
-                    />
-                ))}
+                {isLoading
+                    ? [...Array(12)].map(() => <Sceleton key={generateID()} />)
+                    : orders.map((sneakers) => (
+                          <Card
+                              removeButton="true"
+                              key={generateID()}
+                              data={sneakers}
+                          />
+                      ))}
             </div>
         </div>
     );

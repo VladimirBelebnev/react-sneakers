@@ -8,6 +8,8 @@ import Card from "../Card/Card";
 const FavoritesPage = () => {
     const { data, isLoading } = useContext(Context);
 
+    const generateID = () => Math.floor(Math.random() * (100000 - 0 + 1)) + 0;
+
     let showFavorites = false;
 
     data.forEach((sneakers) => {
@@ -30,15 +32,13 @@ const FavoritesPage = () => {
             ) : null}
             <div className="content-items">
                 {isLoading
-                    ? [...Array(4)].map(() => (
-                          <Sceleton key={Math.random(0, 100)} />
-                      ))
+                    ? [...Array(12)].map(() => <Sceleton key={generateID()} />)
                     : data
                           .filter((sneakers) => sneakers.isFavorite)
-                          .map((data) => (
+                          .map((sneakers) => (
                               <Card
-                                  key={data.id}
-                                  data={data}
+                                  key={sneakers.id}
+                                  data={sneakers}
                               />
                           ))}
             </div>

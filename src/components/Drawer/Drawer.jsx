@@ -8,8 +8,9 @@ import DrawerPrice from "./DrawerPrice";
 import remove from "../../resources/btn-remove.svg";
 import "./Drawer.scss";
 
-const Drawer = () => {
-    const { data, orderID, isSend, onToggleCart } = useContext(Context);
+const Drawer = ({ opened }) => {
+    const { data, orderID, isSend, setIsSend, onToggleCart } =
+        useContext(Context);
 
     let showCart = false;
 
@@ -18,13 +19,16 @@ const Drawer = () => {
     });
 
     return (
-        <div className="drawer-overlay">
+        <div className={`drawer-overlay ${opened ? "cart-hidden" : ""}`}>
             <div className="drawer">
                 <div className="drawer-header">
                     <h2 className="drawer-title">Корзина</h2>
                     <button
                         className="drawer-close"
-                        onClick={() => onToggleCart(false)}>
+                        onClick={() => {
+                            onToggleCart(false);
+                            setIsSend(false);
+                        }}>
                         <img
                             src={remove}
                             alt="close btn"
@@ -49,15 +53,16 @@ const Drawer = () => {
                     />
                 ) : null}
                 <div className="cart">
-                    {showCart &&
-                        data
-                            .filter((sneakers) => sneakers.isCart)
-                            .map((data) => (
-                                <DrawerCartItem
-                                    key={data.id}
-                                    data={data}
-                                />
-                            ))}
+                    {showCart
+                        ? data
+                              .filter((sneakers) => sneakers.isCart)
+                              .map((data) => (
+                                  <DrawerCartItem
+                                      key={data.id}
+                                      data={data}
+                                  />
+                              ))
+                        : null}
                 </div>
                 {showCart ? <DrawerPrice /> : null}
             </div>

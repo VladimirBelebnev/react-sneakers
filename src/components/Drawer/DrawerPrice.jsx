@@ -1,10 +1,12 @@
 import { useContext } from "react";
+import { useTotalPrice } from "../../hooks/hooks";
 import { Context } from "../../context";
 
 import arrow from "../../resources/arrow.svg";
 
 const DrawerPrice = () => {
-    const { data, setOrdersFunc, totalPrice } = useContext(Context);
+    const { data, setOrdersFunc } = useContext(Context);
+    const totalPrice = useTotalPrice(data);
 
     let orderArray = data.filter((sneakers) => sneakers.isCart);
 
