@@ -24,7 +24,7 @@ const Header = () => {
                         />
                     </Link>
                     <div className="header-descr">
-                        <Link to="/">
+                        <Link to="/react-sneakers">
                             <h3>REACT SNEAKERS</h3>
                             <p>Магазин лучших кроссовок</p>
                         </Link>
