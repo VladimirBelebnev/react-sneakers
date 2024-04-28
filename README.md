@@ -1,5 +1,5 @@
-# react–sneakers
+# Проект react–sneakers
 
-YouTube Course: https://www.youtube.com/watch?v=ptiom4YWqoE&list=PL0FGkDGJQjJEos_0yVkbKjsQ9zGVy3dG7
+Учебный проект
 
-Demo Link: https://vladimirbelebnev.github.io/react-sneakers/
+https://vladimirbelebnev.github.io/react-sneakers/
